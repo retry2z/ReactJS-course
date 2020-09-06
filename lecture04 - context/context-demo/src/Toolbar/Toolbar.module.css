@@ -1,0 +1,9 @@
+ul {
+    text-decoration: none;
+}
+
+li {
+    display: inline;
+    padding-left: 15px;
+    text-transform: uppercase;
+}

@@ -1,0 +1,11 @@
+.profile {
+    display: grid;
+    padding: 5%;
+    grid-template-columns: 45% 45%;
+}
+
+.card .formPanel {
+    margin: 1em auto;
+}
+
+

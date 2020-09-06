@@ -1,0 +1,73 @@
+.input {
+    position:relative;
+    margin: 0 auto;
+    margin-bottom:38px;
+    text-align: center;
+    width: 80%;
+}
+
+.label{
+    position:absolute;
+    top:0px;
+	left:0px;
+    font-size:14px;
+    will-change: transform;
+    transition: all 0.6s steps(120);
+}
+
+input { 
+    border:0;
+    background:transparent;
+    width:100%;
+    padding:18px 0 5px 0;
+    font-size:18px;
+    color: #234465;
+}
+
+.span {
+    font-size: 12px;
+	color:#FA6375;
+    content: ' ';
+    visibility: hidden;
+    text-align: left;
+}
+
+/* Validating */
+.valid {
+    border-bottom:1px solid #234465;  
+}
+
+.valid ~ label{
+	color:#234465;	
+}
+
+/*  */
+
+.invalid {
+    border-bottom:1px solid #FA6375;  
+}
+
+.invalid ~ label{
+    color:#FA6375;
+}
+
+.invalid ~ .span{
+    visibility: visible;
+}
+
+/* Animations */
+
+input:focus{ 
+    border:none;	
+    outline:none;
+    border-bottom:1px solid #ffa000;	
+}
+
+input:focus ~ .label {
+	top:-10px;
+    font-size:12px;	
+}
+
+input:focus ~ .span {
+    visibility: hidden;
+}

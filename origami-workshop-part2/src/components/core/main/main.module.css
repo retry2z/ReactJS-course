@@ -1,0 +1,9 @@
+.main {
+    display: inline-block;
+    width: 83%;
+    height: auto;
+    /* border:1px solid blue; */
+    margin-bottom: 5%;
+    padding: 0px 0.4% 0px 0.4%;
+}
+
