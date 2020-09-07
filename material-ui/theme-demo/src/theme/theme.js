@@ -6,7 +6,7 @@ const theme = (isDark) => {
 
     const theme = createMuiTheme({
         palette: {
-            type: 'dark',
+            type: isDark ? 'dark' : 'light',
             primary: deepOrange,
             secondary: green,
         },
