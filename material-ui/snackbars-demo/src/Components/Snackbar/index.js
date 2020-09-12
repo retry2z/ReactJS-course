@@ -29,13 +29,8 @@ const CustomizedSnackbar = () => {
         dispatch(setSnackbar(false, snackbarType, snackbarMessage));
     };
 
-    console.log(snackbarMessage, snackbarOpen)
-
     return (
         < div className={classes.root} >
-            {
-                console.log(snackbarMessage, snackbarOpen)
-            }
             <Snackbar
                 open={snackbarOpen}
                 autoHideDuration={3000}
