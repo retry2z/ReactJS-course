@@ -1,18 +1,22 @@
 import React from "react";
 import "./styles.css";
-import Home from "./Home";
-import About from "./About";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+
 import { Route, Switch } from "react-router-dom";
-import Jobs from "./Jobs";
-import Engineer from "./Engineer";
-import Marketer from "./Marketer";
-import Designer from "./Designer";
-import Breadcrumbs from "./Breadcrumbs";
+
+import Jobs from "./Pages/Jobs";
+import Engineer from "./Pages/Engineer";
+import Marketer from "./Pages/Marketer.jsx";
+import Designer from "./Pages/Designer";
+import Breadcrumbs from "./Components/Breadcrumbs";
+import CustomizedSnackbar from "./Components/Snackbar";
 
 export default function App() {
   return (
     <>
       <Breadcrumbs />
+      <CustomizedSnackbar />
       <Switch>
         <Route exact from="/" render={props => <Home {...props} />} />
         <Route exact path="/about" render={props => <About {...props} />} />

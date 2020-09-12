@@ -1,24 +1,15 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
-import createLogger from 'redux-logger';
+import { combineReducers, createStore } from 'redux';
 import counterReducer from './reducers/counter';
-
-
-const loggerMiddleware = createLogger({});
-
-let middleware = [];
-
-if (process.env.NODE_ENV !== 'production') {
-    middleware = [...middleware, loggerMiddleware];
-}
+import snackbarReducer from './reducers/snackbar';
 
 const reducer = combineReducers({
-    counter: counterReducer
+    counter: counterReducer,
+    snackbar: snackbarReducer,
 });
 
 const store = createStore(
     reducer,
     {},
-   // applyMiddleware(middleware)
 );
 
 export default store

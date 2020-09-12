@@ -11,17 +11,17 @@ const Breadcrumbs = props => {
     history,
     location: { pathname }
   } = props;
-  const pathnames = pathname.split("/").filter(x => x);
+  const pathNames = pathname.split("/").filter(x => x);
   return (
     <MUIBreadcrumbs aria-label="breadcrumb">
-      {pathnames.length > 0 ? (
+      {pathNames.length > 0 ? (
         <Link onClick={() => history.push("/")}>Home</Link>
       ) : (
         <Typography> Home </Typography>
       )}
-      {pathnames.map((name, index) => {
-        const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
-        const isLast = index === pathnames.length - 1;
+      {pathNames.map((name, index) => {
+        const routeTo = `/${pathNames.slice(0, index + 1).join("/")}`;
+        const isLast = index === pathNames.length - 1;
         return isLast ? (
           <Typography key={name}>{name}</Typography>
         ) : (

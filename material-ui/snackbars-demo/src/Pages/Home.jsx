@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import Counter from "./Components/counter";
+import Counter from "../Components/Counter";
 
 const Home = props => {
   const { history } = props;
