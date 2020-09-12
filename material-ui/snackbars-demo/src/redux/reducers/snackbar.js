@@ -1,9 +1,8 @@
 import { SET_SNACKBAR } from '../constants/snackbar';
 
-
 const initialState = {
     snackbarOpen: false,
-    snackbarType: 'success',
+    snackbarType: '',
     snackbarMessage: '',
 }
 

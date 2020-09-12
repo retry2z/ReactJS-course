@@ -8,7 +8,6 @@ const Designer = () => {
   const dispatch = useDispatch();
 
   const data = {
-    open: true,
     message: 'Position is no longer open',
     type: 'error'
   };

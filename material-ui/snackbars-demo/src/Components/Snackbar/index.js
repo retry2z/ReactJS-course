@@ -23,17 +23,23 @@ const CustomizedSnackbar = () => {
     const snackbarMessage = useSelector(state => state.snackbar.snackbarMessage);
 
     const handleClose = (event, reason) => {
+        const data = {
+            open: false,
+            message: snackbarMessage,
+            type: snackbarType
+        }
+
         if (reason === "clickaway") {
             return;
         }
-        dispatch(setSnackbar(false, snackbarType, snackbarMessage));
+        dispatch(setSnackbar(data));
     };
 
     return (
         < div className={classes.root} >
             <Snackbar
                 open={snackbarOpen}
-                autoHideDuration={3000}
+                autoHideDuration={2000}
                 onClose={handleClose}
             >
                 <Alert
