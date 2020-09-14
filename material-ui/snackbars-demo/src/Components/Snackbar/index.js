@@ -36,7 +36,7 @@ const CustomizedSnackbar = () => {
     };
 
     return (
-        < div className={classes.root} >
+        <div className={classes.root} >
             <Snackbar
                 open={snackbarOpen}
                 autoHideDuration={2000}
@@ -51,7 +51,7 @@ const CustomizedSnackbar = () => {
                     {snackbarMessage}
                 </Alert>
             </Snackbar>
-        </div >
+        </div>
     );
 };
 
