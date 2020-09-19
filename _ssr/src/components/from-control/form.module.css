@@ -1,0 +1,21 @@
+.box {
+    background: rgb(238,238,238,0.62);
+    padding: 18px;
+    padding-top: 44px;
+    padding-bottom: 24px;
+    margin: 0em auto;
+    border-radius: 3px;
+    width: 100%;
+}
+
+.fromActions {
+    text-align: center;
+}
+
+.fromActions button {
+    display: inline-block;    
+}
+
+.fromActions button:not(:first-child) {
+    margin-left: 15px;
+}

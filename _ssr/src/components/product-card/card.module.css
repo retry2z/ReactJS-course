@@ -1,0 +1,107 @@
+.room {
+    margin-top: 1%;
+    width: 100%;
+    background: rgb(238,238,238,0.81);    
+    position: relative;
+}
+
+.room_image {
+    width: 100%;
+    z-index: 0;
+    margin: 0 auto;
+}
+
+.room_name {
+    margin: 0 auto;
+    position: relative;
+    top: -3rem;
+    z-index: 1;
+    width: 80%;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 0.6rem;
+    background-color: #504038;
+    color:#f9f7f6;
+    font-weight: 400;
+    transform: translateY(50%);  
+}
+
+.people {
+    margin: 0 auto;
+    padding: 5px;
+    display: grid;
+    height: 25vh;
+    grid-template-columns: 50% 50%;
+}
+
+.person {
+    font-size: 16px;
+    margin: 2px auto;
+}
+
+.room_join_btn {
+    background-color: forestgreen;
+    color:#f9f7f6;
+    border: none;
+    border-radius: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transform: all 0.2;
+    width: 100%;
+}
+
+.room_join_btn:hover {
+    background-color: #07ac46;
+}
+
+.room_leave_btn {
+    background-color: #FA7D58;
+    color:#f9f7f6;
+    border: none;
+    border-radius: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transform: all 0.2;
+    width: 100%;
+}
+
+.room_leave_btn:hover {
+    background-color: #fa9273;
+}
+
+.room_owner_btn {
+    background-color: #fa5d58;
+    color:#f9f7f6;
+    border: none;
+    border-radius: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transform: all 0.2;
+    width: 100%;
+}
+
+.room_owner_btn:hover {
+    background-color: #fc7975;
+}
+
+.room_default_btn {
+    background-color: #b9b9b9;
+    color:#222222;
+    border: none;
+    border-radius: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transform: all 0.2;
+    width: 100%;
+}
+
+.people ~ button {
+    position: absolute;  
+    bottom: 0em;
+    height: 14%;
+    transition: all 0.2s ease-in;
+}

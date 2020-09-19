@@ -1,0 +1,32 @@
+.card_simple {
+    color: #504038;
+    background: rgb(238,238,238,0.62);
+    width: 100%;
+    height: auto;
+    border: 1px solid #504038;
+    margin-bottom: 0.6%;
+    border-radius: 4px;
+    transition: all 0.2s ease-in;
+}
+
+.body {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    vertical-align: top;
+    word-wrap: break-word;
+    padding: 1.2%;
+    font-size: 16px;
+    margin-bottom: 0.5%;    
+}
+
+
+.author {
+    text-align: right;
+    padding: 0.8%;
+}
+
+.card_simple:hover {
+    background: rgb(238, 238, 238);
+    cursor: pointer;
+}
+

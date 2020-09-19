@@ -1,0 +1,16 @@
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 6vh;
+    margin-top: 1rem;
+    text-align: center;
+    color: #eeeeee;
+    background-color:#504038;
+    text-transform: uppercase;
+}
+
+.footer p {
+    font-weight: bold;;
+}

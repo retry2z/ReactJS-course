@@ -1,0 +1,47 @@
+.speech_wrapper {
+    color: #504038;
+    background: rgb(238,238,238,0.62);
+    border: 1px solid #504038;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.speech_body {
+    display: grid;
+    grid-template-columns: 30% 69%;
+    grid-gap: 1%;
+    padding: 5px 15px;
+    align-items: center;
+}
+
+.speech_info {
+    font-weight: bold;
+}
+
+.speech_cmd {
+    text-align: right;
+}
+
+.speech_autoStart {
+    display: inline;
+    padding-right: 15px;
+}
+
+.speech_checkbox {
+    margin-left: 8px;
+    transform: scale(1.5);
+}
+
+.speech_autoStart label, input {
+    cursor: pointer;
+}
+
+.speech_autoStart ~ button {
+    margin-right: 15px;
+    display: inline;
+}
+
+.speech_autoStart ~ button:last-child {
+    margin-right: 0px;
+    display: inline;
+}

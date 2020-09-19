@@ -1,0 +1,12 @@
+.title {
+    margin: 0 auto;
+    z-index: 3;
+    width: 50%;
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 12px 40px;
+    background-color: #504038;
+    color:#f9f7f6;
+    font-weight: 400;
+    transform: translateY(50%); 
+}

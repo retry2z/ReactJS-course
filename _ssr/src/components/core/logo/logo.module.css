@@ -1,0 +1,13 @@
+.logo {
+    display: inline-block;
+    height: auto;
+    padding: 0.5%;
+    margin: 0.1%;
+    vertical-align: top;
+    padding-left: 1.3rem;
+}
+
+.imgLogo {
+    width: 7rem;
+    margin: 8px;
+}
