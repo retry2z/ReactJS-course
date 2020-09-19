@@ -6,12 +6,17 @@ import Navbar from "./components/navbar";
 import Home from "./pages/home";
 import GameIndex from "./pages/game";
 
-import messages from "./common/lang/messages";
+import messages from "./common/i18n/messages";
+import { defaultLang } from "./common/i18n/";
 
 import 'bulma/css/bulma.min.css';
 
-const App = () => (
-  <IntlProvider locale="en" messages={messages["en"]}>
+const App = ({ lang }) => (
+  <IntlProvider
+    locale={lang}
+    messages={messages[lang]}
+    defaultLocale={defaultLang}
+  >
 
     <Navbar />
 
