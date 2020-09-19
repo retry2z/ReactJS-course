@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from 'react-intl';
 
-import LangSwitcher from "../common/langSwitcher";
+import LangSwitcher from "../langSwitcher";
 
 function Navbar() {
     const [isActive, setActive] = useState(false);
@@ -32,14 +33,10 @@ function Navbar() {
                 </div>
 
                 <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
-                    <div className="navbar-start">
-                        <Link to="/" className="navbar-item">
-                            Home
-            </Link>
 
-                        <Link to="/games" className="navbar-item">
-                            Games
-            </Link>
+                    <div className="navbar-start">
+                        <Link to="/" className="navbar-item"><FormattedMessage id="nav.home"/></Link>
+                        <Link to="/games" className="navbar-item"><FormattedMessage id="nav.games"/></Link>
                     </div>
 
                     <div className="navbar-end">

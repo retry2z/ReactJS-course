@@ -6,7 +6,6 @@ const path = require("path");
 const htmlTemplateFilename = path.resolve(
     __dirname,
     "..",
-    "src",
     "server",
     "index.html",
 );
