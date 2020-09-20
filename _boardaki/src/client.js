@@ -5,10 +5,10 @@ import { hydrate } from 'react-dom';
 
 import { determineUserLang } from "./common/i18n";
 
-const lang = determineUserLang(navigator.languages || []);
+const lang = determineUserLang(navigator.languages || [], window.location.pathname);
 
 hydrate(
-  <BrowserRouter>
+  <BrowserRouter basename={`/${lang}`}>
     <App lang={lang} />
   </BrowserRouter>,
   document.getElementById('root')

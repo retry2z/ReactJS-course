@@ -1,25 +1,39 @@
 export const defaultLang = "en";
 
 export const supportedLangs = {
-    en: "English",
-    ar: "Arabic (عربي)",
+  en: "English",
+  ar: "Arabic (عربي)",
 };
 
-export function determineUserLang(acceptedLangs) {   
-    const acceptedLangCodes = acceptedLangs.map(stripCountry);
-    
-    const supportedLangCodes = Object.keys(supportedLangs);
+export function determineUserLang(acceptedLangs, path = null) {
+  // check url for /en/foo where en is a supported language code
+  if (path !== null) {
+    const urlLang = path.trim().split("/")[1];
 
-    const matchingLangCode = acceptedLangCodes.find(code =>
-        supportedLangCodes.includes(code),
-    );
+    const matchingUrlLang = findFirstSupported([stripCountry(urlLang)]);
 
-    return matchingLangCode || defaultLang;
+    if (matchingUrlLang) {
+      return matchingUrlLang;
+    }
+  }
+
+  // check browser-set accepted langs
+  const matchingAcceptedLang = findFirstSupported(
+    acceptedLangs.map(stripCountry),
+  );
+
+  return matchingAcceptedLang || defaultLang;
+}
+
+function findFirstSupported(langs) {
+  const supported = Object.keys(supportedLangs);
+
+  return langs.find(code => supported.includes(code));
 }
 
 function stripCountry(lang) {
-    return lang
-        .trim()
-        .replace("_", "-")
-        .split("-")[0];
+  return lang
+    .trim()
+    .replace("_", "-")
+    .split("-")[0];
 }

@@ -15,9 +15,14 @@ server
 
 server.get('/*', (req, res) => {
   const context = {};
-  const lang = determineUserLang(req.acceptsLanguages());
+  const lang = determineUserLang(req.acceptsLanguages(), req.path);
+
+  if (req.path.trim() === "/") {
+    res.redirect(`/${lang}`);
+  }
+
   const markup = renderToString(
-    <StaticRouter context={context} location={req.url}>
+    <StaticRouter context={context} location={req.url} basename={`/${lang}`}>
       <App lang={lang} />
     </StaticRouter>
   );
