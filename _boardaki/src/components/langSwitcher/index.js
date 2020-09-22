@@ -1,12 +1,13 @@
 import React from "react";
 
-import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
 import { useIntl } from "react-intl";
 import { supportedLangs } from "../../common/i18n/";
+
 
 export default function LangSwitcher() {
     const { locale: lang } = useIntl(); // get the current set lang from Provider
@@ -22,7 +23,7 @@ export default function LangSwitcher() {
     }
 
     return (
-        <Paper>
+        <>
             <Button aria-controls="lang-menu" aria-haspopup="true" onClick={handleClick}>
                 {supportedLangs[lang]}
             </Button>
@@ -30,7 +31,6 @@ export default function LangSwitcher() {
             <Menu
                 id="lang-menu"
                 anchorEl={anchorEl}
-                keepMounted
                 open={!!anchorEl}
                 onClose={handleClose}
             >
@@ -38,14 +38,15 @@ export default function LangSwitcher() {
                     Object.keys(supportedLangs).map(langCode => (
                         <a key={langCode} href={`/${langCode}`}>
                             <MenuItem>
-                                {supportedLangs[langCode]}
+                                <Typography variant="body1">
+                                    {supportedLangs[langCode]}
+                                </Typography>
                             </MenuItem>
                         </a>
                     ))
                 }
-
             </Menu>
-        </Paper>
+        </>
     );
 }
 
