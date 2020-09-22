@@ -1,31 +1,51 @@
 import React from "react";
-import { useIntl } from "react-intl";
 
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+
+import { useIntl } from "react-intl";
 import { supportedLangs } from "../../common/i18n/";
 
 export default function LangSwitcher() {
-    const { locale: lang } = useIntl();
+    const { locale: lang } = useIntl(); // get the current set lang from Provider
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    }
 
     return (
-        <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link">{supportedLangs[lang]}</a>
+        <Paper>
+            <Button aria-controls="lang-menu" aria-haspopup="true" onClick={handleClick}>
+                {supportedLangs[lang]}
+            </Button>
 
-            <div className="navbar-dropdown is-right">
-                {Object.keys(supportedLangs).map(code => (
-                    // We want absolute URLs here, e.g. /en, so that our app
-                    // will reload and switch to the selected language. So we
-                    // use <a> instead of React Router's <Link>, since the
-                    // latter will always prefix its URLs with the basename
-                    // (the current language).
-                    <a
-                        key={code}
-                        href={`/${code}`}
-                        className={`navbar-item ${code === lang ? "is-active" : ""}`}
-                    >
-                        {supportedLangs[code]}
-                    </a>
-                ))}
-            </div>
-        </div>
+            <Menu
+                id="lang-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={!!anchorEl}
+                onClose={handleClose}
+            >
+                {
+                    Object.keys(supportedLangs).map(langCode => (
+                        <a key={langCode} href={`/${langCode}`}>
+                            <MenuItem>
+                                {supportedLangs[langCode]}
+                            </MenuItem>
+                        </a>
+                    ))
+                }
+
+            </Menu>
+        </Paper>
     );
-} 
+}
+
