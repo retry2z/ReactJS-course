@@ -4,12 +4,13 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import { Language } from '@material-ui/icons';
 
 import { useIntl } from "react-intl";
 import { supportedLangs } from "../../common/i18n/";
 
 
-export default function LangSwitcher() {
+const LangSwitcher = ({ short }) => {
     const { locale: lang } = useIntl(); // get the current set lang from Provider
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -20,12 +21,18 @@ export default function LangSwitcher() {
 
     const handleClose = () => {
         setAnchorEl(null);
-    }
+    };
 
     return (
         <>
-            <Button aria-controls="lang-menu" aria-haspopup="true" onClick={handleClick}>
-                {supportedLangs[lang]}
+            <Button
+                color="inherit"
+                startIcon={!short && <Language />}
+                aria-controls="lang-menu"
+                onClick={handleClick}
+            >
+
+                {short ? (lang).toLocaleUpperCase() : supportedLangs[lang]}
             </Button>
 
             <Menu
@@ -39,7 +46,7 @@ export default function LangSwitcher() {
                         <a key={langCode} href={`/${langCode}`}>
                             <MenuItem>
                                 <Typography variant="body1">
-                                    {supportedLangs[langCode]}
+                                    {short ? (langCode).toLocaleUpperCase() : supportedLangs[langCode]}
                                 </Typography>
                             </MenuItem>
                         </a>
@@ -50,3 +57,4 @@ export default function LangSwitcher() {
     );
 }
 
+export default LangSwitcher

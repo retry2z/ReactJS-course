@@ -2,49 +2,62 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from 'react-intl';
 
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import { Person, Language } from '@material-ui/icons'
+import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+
 import LangSwitcher from "../langSwitcher";
 
 function Navbar() {
     const [isActive, setActive] = useState(false);
 
     return (
-        <nav
-            role="navigation"
-            aria-label="main navigation"
-            className="navbar is-primary has-shadow"
-        >
-            <div className="container">
-                <div className="navbar-brand">
-                    <Link to="/" className="navbar-item">
-                        <strong>Boardaki</strong>
-                    </Link>
+        <AppBar position="static">
+            <Toolbar>
+                <Grid
+                    container
+                    direction="row"
+                    justify="space-between"
+                    alignItems="center"
+                >
+                    <Hidden smUp >
+                        <Grid item xs={1}>
+                            <IconButton edge="start" color="inherit" aria-label="menu">
+                                <MenuIcon />
+                            </IconButton>
+                        </Grid>
+                    </Hidden>
 
-                    <a
-                        role="button"
-                        aria-label="menu"
-                        aria-expanded="false"
-                        className="navbar-burger burger"
-                        onClick={() => setActive(!isActive)}
-                    >
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
+                    <Typography variant="h4">Boardaki</Typography>
 
-                <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
+                    <div>
+                        <Button
+                            color="inherit"
+                            startIcon={<Person />}
+                        >
+                            <Hidden xsDown>
+                                Login
+                            </Hidden>
+                        </Button>
 
-                    <div className="navbar-start">
-                        <Link to="/" className="navbar-item"><FormattedMessage id="nav.home"/></Link>
-                        <Link to="/games" className="navbar-item"><FormattedMessage id="nav.games"/></Link>
+                        <Hidden smUp>
+                            <LangSwitcher short />
+                        </Hidden>
+                        <Hidden xsDown>
+                            <LangSwitcher />
+                        </Hidden>
                     </div>
+                </Grid>
 
-                    <div className="navbar-end">
-                        <LangSwitcher />
-                    </div>
-                </div>
-            </div>
-        </nav>
+            </Toolbar>
+        </AppBar>
+
     );
 }
 
