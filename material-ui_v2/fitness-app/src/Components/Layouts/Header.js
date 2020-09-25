@@ -5,8 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
 const Header = () => {
-    const classes = useStyle();
-
     return (
         <AppBar position='static'>
             <Toolbar>
