@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -34,28 +33,30 @@ const Create = () => {
                 Create
             </Button>
 
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <Dialog open={open} onClose={handleClose} aria-labelledby="create-form-exercise">
 
-                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                <DialogTitle id="create-form-exercise">
+                    Create new exercise
+                </DialogTitle>
 
                 <DialogContent>
                     <DialogContentText>
-                        Create new exercise.
+                        Let's try something new
                     </DialogContentText>
 
                     <TextField
                         autoFocus
                         margin="dense"
                         id="name"
-                        label="Email Address"
-                        type="email"
+                        label="Title"
+                        type="text"
                         fullWidth
                     />
                 </DialogContent>
 
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Subscribe
+                    <Button onClick={handleClose} variant="contained" color="secondary">
+                        Create
                     </Button>
                 </DialogActions>
             </Dialog>

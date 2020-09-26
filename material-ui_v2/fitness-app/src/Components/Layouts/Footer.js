@@ -25,7 +25,7 @@ const Footer = ({ muscles = [], setCategory, category }) => {
             <Tabs
                 value={index}
                 onChange={(ev, index) => setCategory(!!index ? muscles[index - 1] : null)}
-                indicatorColor='primary'
+                indicatorColor='secondary'
                 textColor='primary'
                 centered
             >
