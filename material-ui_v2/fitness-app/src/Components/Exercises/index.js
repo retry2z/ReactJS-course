@@ -41,7 +41,7 @@ const Exercises = ({
         <Grid container>
             <Grid item xs={false} sm={1} />
 
-            <Grid item xs={12} sm={5}>
+            <Grid item xs={12} sm={3}>
                 <Paper className={classes.item}>
                     {data.map(([group, exercises]) => (
                         (!category || (category === group)) &&
@@ -71,7 +71,7 @@ const Exercises = ({
                 </Paper>
             </Grid>
 
-            <Grid item xs={12} sm={5}>
+            <Grid item xs={12} sm={7}>
                 <Paper className={classes.item}>
                     <Typography variant='h3' color='primary'>
                         {title}
