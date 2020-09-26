@@ -24,25 +24,45 @@ const useStyles = makeStyles({
 
 })
 
-const Exercises = ({ data }) => {
+const Exercises = ({
+    data,
+    category,
+    selectExercise,
+    exercise: {
+        id,
+        title = 'Welcome',
+        description = 'Please select an exercise from the list',
+    }
+
+}) => {
     const classes = useStyles();
 
     return (
         <Grid container>
-            <Grid item xs={0} sm={1} />
+            <Grid item xs={false} sm={1} />
 
-            <Grid item xs={10} sm={5}>
+            <Grid item xs={12} sm={5}>
                 <Paper className={classes.item}>
                     {data.map(([group, exercises]) => (
+                        (!category || (category === group)) &&
                         <div key={group}>
-                            <Typography className={classes.group} variant='h6'>
+                            <Typography className={classes.group}
+                                variant='h5'
+                                color='primary'
+                            >
                                 {group}
                             </Typography>
 
                             {exercises.map(exercise => (
                                 <List key={exercise.title} component='ul'>
-                                    <ListItem button>
-                                        <ListItemText>{exercise.title}</ListItemText>
+                                    <ListItem button
+                                        onClick={() => selectExercise(exercise.id)}
+                                    >
+                                        <ListItemText primary=
+                                            {
+                                                <Typography variant='subtitle2'>{exercise.title}</Typography>
+                                            }
+                                        />
                                     </ListItem>
                                 </List>
                             ))}
@@ -51,13 +71,18 @@ const Exercises = ({ data }) => {
                 </Paper>
             </Grid>
 
-            <Grid item xs={10} sm={5}>
+            <Grid item xs={12} sm={5}>
                 <Paper className={classes.item}>
-                    <h1>Panel</h1>
+                    <Typography variant='h3' color='primary'>
+                        {title}
+                    </Typography>
+                    <Typography variant='subtitle1' color='secondary'>
+                        {description}
+                    </Typography>
                 </Paper>
             </Grid>
 
-            <Grid item xs={0} sm={1} />
+            <Grid item xs={false} sm={1} />
         </Grid>
     );
 }

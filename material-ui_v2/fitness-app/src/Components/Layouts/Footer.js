@@ -9,25 +9,30 @@ const useStyle = makeStyles(theme => ({
     footer: {
         top: 'auto',
         bottom: 0,
-        height:78,
+        height: 78,
     },
 }));
 
-const Footer = ({ categories = [] }) => {
+const Footer = ({ muscles = [], setCategory, category }) => {
     const classes = useStyle();
+
+    const index = category ?
+        muscles.findIndex(muscle => muscle === category) + 1
+        : 0;
 
     return (
         <AppBar className={classes.footer} color='inherit' position='fixed'>
             <Tabs
-                value={0}
+                value={index}
+                onChange={(ev, index) => setCategory(!!index ? muscles[index - 1] : null)}
                 indicatorColor='primary'
                 textColor='primary'
                 centered
             >
                 <Tab label='All' />
 
-                {categories.map(muscles => (
-                    <Tab key={muscles} label={muscles} />
+                {muscles.map(muscle => (
+                    <Tab key={muscle} label={muscle} />
                 ))}
 
             </Tabs>
