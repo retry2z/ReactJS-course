@@ -1,14 +1,12 @@
 import React from 'react';
+import { Header, Main, Footer } from './Layouts';
+import Exercises from './Exercises';
+
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { exercises, muscles } from '../data/store';
 
-import { Header, Main, Footer } from './Layouts';
-import Exercises from './Exercises';
-import CssBaseline from '@material-ui/core/CssBaseline';
-
-
 const App = () => {
-  const [category, setCategory] = React.useState(null);
   const [exercise, setExercise] = React.useState({});
 
   const data = Object.entries(exercises.reduce((acc, exercise) => {
@@ -34,17 +32,12 @@ const App = () => {
       <Main>
         <Exercises
           data={data}
-          category={category}
           exercise={exercise}
           selectExercise={handleSelectExercise}
         />
       </Main>
 
-      <Footer
-        category={category}
-        setCategory={setCategory}
-        muscles={muscles}
-      />
+      <Footer />
     </>
   );
 }

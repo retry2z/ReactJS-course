@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { UserContext } from '../../Context';
+
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,8 +12,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Add from '@material-ui/icons/Add';
 
 const Create = () => {
-
     const [open, setOpen] = React.useState(false);
+    const [form, setForm] = React.useState({});
+    const context = React.useContext(UserContext);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -21,8 +24,16 @@ const Create = () => {
         setOpen(false);
     };
 
+    const handleChange = (ev, name) => {
+        setForm({
+            ...form,
+            [name]: ev.target.value
+        })
+    }
+
     return (
         <>
+            {console.log(context)}
             <Button
                 variant="contained"
                 color="secondary"
@@ -33,7 +44,11 @@ const Create = () => {
                 Create
             </Button>
 
-            <Dialog open={open} onClose={handleClose} aria-labelledby="create-form-exercise">
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="create-form-exercise"
+            >
 
                 <DialogTitle id="create-form-exercise">
                     Create new exercise
@@ -44,14 +59,15 @@ const Create = () => {
                         Let's try something new
                     </DialogContentText>
 
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Title"
-                        type="text"
-                        fullWidth
-                    />
+                    <form>
+                        <TextField
+                            label="Title"
+                            onChange={e => handleChange(e, 'title')}
+                            margin="normal"
+                            fullWidth
+                        />
+                    </form>
+
                 </DialogContent>
 
                 <DialogActions>

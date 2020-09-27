@@ -1,4 +1,5 @@
 import React from 'react';
+import { UserContext } from '../../Context';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -13,27 +14,31 @@ const useStyle = makeStyles(theme => ({
     },
 }));
 
-const Footer = ({ muscles = [], setCategory, category }) => {
+const Footer = ({ setCategory, category }) => {
+    const context = React.useContext(UserContext || []);
     const classes = useStyle();
 
-    const index = category ?
-        muscles.findIndex(muscle => muscle === category) + 1
-        : 0;
+    const index =
+        context.category ?
+            context.muscles.findIndex(x => x === context.category) + 1
+            : 0;
 
     return (
         <AppBar className={classes.footer} color='inherit' position='fixed'>
             <Tabs
                 value={index}
-                onChange={(ev, index) => setCategory(!!index ? muscles[index - 1] : null)}
+                onChange={(ev, index) => context.setCategory(!!index ? context.muscles[index - 1] : null)}
                 indicatorColor='secondary'
                 textColor='primary'
                 centered
             >
                 <Tab label='All' />
 
-                {muscles.map(muscle => (
-                    <Tab key={muscle} label={muscle} />
-                ))}
+                {
+                    context.muscles.map(muscle => (
+                        <Tab key={muscle} label={muscle} />
+                    ))
+                }
 
             </Tabs>
         </AppBar>

@@ -17,7 +17,6 @@ const Exercises = ({
                 <LeftPanel
                     data={data}
                     selectExercise={selectExercise}
-                    category={category}
                 />
             </Grid>
 

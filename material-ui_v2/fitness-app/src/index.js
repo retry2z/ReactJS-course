@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './Components/App';
+import ContextContainer from './Context';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ContextContainer>
+      <App />
+    </ContextContainer>
   </React.StrictMode>,
   document.getElementById('root')
 );

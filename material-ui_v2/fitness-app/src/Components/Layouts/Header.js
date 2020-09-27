@@ -7,7 +7,6 @@ import Create from '../Dialogs/Create';
 import { Grid } from '@material-ui/core';
 
 const Header = () => {
-
     return (
         <AppBar position='static'>
             <Toolbar>
@@ -20,12 +19,13 @@ const Header = () => {
                     <Grid item>
                         <Typography variant='h4'>
                             Fitness
-                    </Typography>
+                        </Typography>
                     </Grid>
 
                     <Grid item>
                         <Create />
                     </Grid>
+
                 </Grid>
             </Toolbar>
         </AppBar>

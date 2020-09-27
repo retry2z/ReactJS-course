@@ -1,4 +1,5 @@
 import React from 'react';
+import { UserContext } from '../../Context';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -25,15 +26,16 @@ const useStyles = makeStyles({
 
 const LeftPanel = ({
     data,
-    category,
     selectExercise,
 }) => {
+
+    const context = React.useContext(UserContext);
     const classes = useStyles();
 
     return (
         <Paper className={classes.item}>
             {data.map(([group, exercises]) => (
-                (!category || (category === group)) &&
+                (!context.category || (context.category === group)) &&
                 <div key={group}>
                     <Typography className={classes.group}
                         variant='h5'
