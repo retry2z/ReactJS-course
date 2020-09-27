@@ -2,7 +2,7 @@ import React from 'react';
 
 import { exercises, muscles } from '../data/store';
 
-import { Header, Footer } from './Layouts';
+import { Header, Main, Footer } from './Layouts';
 import Exercises from './Exercises';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -31,12 +31,14 @@ const App = () => {
 
       <Header />
 
-      <Exercises
-        data={data}
-        category={category}
-        exercise={exercise}
-        selectExercise={handleSelectExercise}
-      />
+      <Main>
+        <Exercises
+          data={data}
+          category={category}
+          exercise={exercise}
+          selectExercise={handleSelectExercise}
+        />
+      </Main>
 
       <Footer
         category={category}
