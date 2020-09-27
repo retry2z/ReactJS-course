@@ -1,4 +1,5 @@
 import React from 'react';
+import { UserContext } from '../../Context';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -13,13 +14,14 @@ const useStyles = makeStyles({
     },
 })
 
-const RightPanel = ({ exercise }) => {
+const RightPanel = () => {
+    const context = React.useContext(UserContext);
     const classes = useStyles();
     const {
-       // id,
+        // id,
         title = 'Welcome',
         description = 'Please select an exercise from the list',
-    } = exercise;
+    } = context.currentExercise;
 
 
     return (

@@ -4,26 +4,16 @@ import RightPanel from './RightPanel';
 
 import Grid from '@material-ui/core/Grid';
 
-const Exercises = ({
-    data,
-    category,
-    selectExercise,
-    exercise
-}) => {
+const Exercises = () => {
 
     return (
         <Grid container>
             <Grid item xs={12} sm={4}>
-                <LeftPanel
-                    data={data}
-                    selectExercise={selectExercise}
-                />
+                <LeftPanel />
             </Grid>
 
             <Grid item xs={12} sm={8}>
-                <RightPanel
-                    exercise={exercise}
-                />
+                <RightPanel />
             </Grid>
         </Grid>
     );

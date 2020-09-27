@@ -14,20 +14,19 @@ const useStyle = makeStyles(theme => ({
     },
 }));
 
-const Footer = ({ setCategory, category }) => {
-    const context = React.useContext(UserContext || []);
+const Footer = () => {
+    const context = React.useContext(UserContext);
     const classes = useStyle();
 
     const index =
-        context.category ?
-            context.muscles.findIndex(x => x === context.category) + 1
-            : 0;
+        context.selectedCategory ?
+            context.dataMuscles.findIndex(x => x === context.selectedCategory) + 1 : 0;
 
     return (
         <AppBar className={classes.footer} color='inherit' position='fixed'>
             <Tabs
                 value={index}
-                onChange={(ev, index) => context.setCategory(!!index ? context.muscles[index - 1] : null)}
+                onChange={(ev, index) => context.setCurrentCategory(!!index ? context.dataMuscles[index - 1] : null)}
                 indicatorColor='secondary'
                 textColor='primary'
                 centered
@@ -35,7 +34,7 @@ const Footer = ({ setCategory, category }) => {
                 <Tab label='All' />
 
                 {
-                    context.muscles.map(muscle => (
+                    context.dataMuscles.map(muscle => (
                         <Tab key={muscle} label={muscle} />
                     ))
                 }

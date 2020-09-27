@@ -21,33 +21,29 @@ const useStyles = makeStyles({
     group: {
         textTransform: 'capitalize',
     }
+});
 
-})
-
-const LeftPanel = ({
-    data,
-    selectExercise,
-}) => {
-
+const LeftPanel = () => {
     const context = React.useContext(UserContext);
     const classes = useStyles();
 
     return (
         <Paper className={classes.item}>
-            {data.map(([group, exercises]) => (
-                (!context.category || (context.category === group)) &&
-                <div key={group}>
+
+            {context.data.map(([muscles, exercises]) => (
+                (!context.selectedCategory || (context.selectedCategory === muscles)) &&
+                <div key={muscles}>
                     <Typography className={classes.group}
                         variant='h5'
                         color='primary'
                     >
-                        {group}
+                        {muscles}
                     </Typography>
 
                     {exercises.map(exercise => (
                         <List key={exercise.title} component='ul'>
                             <ListItem button
-                                onClick={() => selectExercise(exercise.id)}
+                                onClick={() => context.selectCurrentExercise(exercise.id)}
                             >
                                 <ListItemText primary=
                                     {

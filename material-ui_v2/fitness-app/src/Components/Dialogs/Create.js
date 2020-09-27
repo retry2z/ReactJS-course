@@ -24,7 +24,7 @@ const Create = () => {
         setOpen(false);
     };
 
-    const handleChange = (ev, name) => {
+    const handleChange = name => ev => {
         setForm({
             ...form,
             [name]: ev.target.value
@@ -33,7 +33,7 @@ const Create = () => {
 
     return (
         <>
-            {console.log(context)}
+            {console.log(this)}
             <Button
                 variant="contained"
                 color="secondary"
@@ -62,7 +62,7 @@ const Create = () => {
                     <form>
                         <TextField
                             label="Title"
-                            onChange={e => handleChange(e, 'title')}
+                            onChange={handleChange('title')}
                             margin="normal"
                             fullWidth
                         />
