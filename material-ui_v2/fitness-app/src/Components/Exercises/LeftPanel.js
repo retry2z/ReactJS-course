@@ -34,7 +34,7 @@ const LeftPanel = () => {
         <Paper className={classes.item}>
 
             {context.data.map(([muscles, exercises]) => (
-                (!context.selectedCategory || (context.selectedCategory === muscles)) &&
+                (!context.currentCategory || (context.currentCategory === muscles)) &&
                 <div key={muscles}>
                     <Typography className={classes.group}
                         variant='h5'

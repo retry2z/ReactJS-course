@@ -6,8 +6,8 @@ export const UserContext = React.createContext({
     data: [],
     exercises: [],
     categories: [],
-    selectedCategory: '',
-    setCurrentCategory: () => { },
+    currentCategory: '',
+    selectCategory: () => { },
     currentExercise: {},
     selectExercise: () => { },
     createExercise: () => { },
@@ -16,7 +16,7 @@ export const UserContext = React.createContext({
 
 const ContextContainer = (props) => {
     const [currentExercise, setCurrentExercise] = React.useState({});
-    const [selectedCategory, setCurrentCategory] = React.useState(null);
+    const [currentCategory, setCurrentCategory] = React.useState(null);
     const [exercises, setExercises] = React.useState(dataExercises);
 
     const initialCategories = categories.reduce((acc, category) => {
@@ -29,6 +29,10 @@ const ContextContainer = (props) => {
         acc[muscles] = [...acc[muscles], exercise];
         return acc
     }, initialCategories));
+
+    const selectCategory = (value) => {
+        setCurrentCategory(value);
+    };
 
     const selectExercise = (id) => {
         setCurrentExercise(exercises.find(x => x.id === id));
@@ -51,8 +55,8 @@ const ContextContainer = (props) => {
                 data,
                 exercises,
                 categories,
-                selectedCategory,
-                setCurrentCategory,
+                currentCategory,
+                selectCategory,
                 currentExercise,
                 selectExercise,
                 createExercise,

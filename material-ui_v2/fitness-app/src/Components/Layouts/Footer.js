@@ -19,14 +19,14 @@ const Footer = () => {
     const classes = useStyle();
 
     const index =
-        context.selectedCategory ?
-            context.categories.findIndex(x => x === context.selectedCategory) + 1 : 0;
+        context.currentCategory ?
+            context.categories.findIndex(x => x === context.currentCategory) + 1 : 0;
 
     return (
         <AppBar className={classes.footer} color='inherit' position='fixed'>
             <Tabs
                 value={index}
-                onChange={(ev, index) => context.setCurrentCategory(!!index ? context.categories[index - 1] : null)}
+                onChange={(ev, index) => context.selectCategory(!!index ? context.categories[index - 1] : null)}
                 indicatorColor='secondary'
                 textColor='primary'
                 centered
