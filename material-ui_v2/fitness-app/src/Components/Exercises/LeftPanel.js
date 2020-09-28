@@ -48,7 +48,7 @@ const LeftPanel = () => {
                             <ListItem
                                 key={exercise.title}
                                 button
-                                onClick={() => context.selectCurrentExercise(exercise.id)}
+                                onClick={() => context.selectExercise(exercise.id)}
                             >
                                 <ListItemText primary=
                                     {

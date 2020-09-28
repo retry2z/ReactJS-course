@@ -9,8 +9,8 @@ export const UserContext = React.createContext({
     selectedCategory: '',
     setCurrentCategory: () => { },
     currentExercise: {},
-    selectCurrentExercise: () => { },
-    createNewExercise: () => { },
+    selectExercise: () => { },
+    createExercise: () => { },
     removeExercise: () => { },
 });
 
@@ -28,11 +28,11 @@ const ContextContainer = (props) => {
         return acc
     }, {}));
 
-    const selectCurrentExercise = (id) => {
+    const selectExercise = (id) => {
         setCurrentExercise(exercises.find(x => x.id === id));
     };
 
-    const createNewExercise = (exercise) => {
+    const createExercise = (exercise) => {
         setExercises([
             ...exercises,
             exercise
@@ -41,7 +41,7 @@ const ContextContainer = (props) => {
 
     const removeExercise = (id) => {
         setExercises(exercises.filter(x => x.id !== id));
-    }
+    };
 
     return (
         <UserContext.Provider
@@ -52,8 +52,8 @@ const ContextContainer = (props) => {
                 selectedCategory,
                 setCurrentCategory,
                 currentExercise,
-                selectCurrentExercise,
-                createNewExercise,
+                selectExercise,
+                createExercise,
                 removeExercise,
             }}>
 

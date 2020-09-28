@@ -63,7 +63,7 @@ const Create = () => {
             id: form.title.toLowerCase().replace(/ /g, '-')
         });
 
-        context.createNewExercise(form);
+        context.createExercise(form);
 
         setForm({
             title: '',
