@@ -1,15 +1,24 @@
 import React from 'react';
 
-import { exercises as dataExercises, muscles as dataMuscles } from './data/store';
+import { exercises as dataExercises, muscles as categories } from './data/store';
 
-
-export const UserContext = React.createContext({});
+export const UserContext = React.createContext({
+    data: [],
+    exercises: [],
+    categories: [],
+    selectedCategory: '',
+    setCurrentCategory: () => { },
+    currentExercise: {},
+    selectCurrentExercise: () => { },
+    createNewExercise: () => { },
+});
 
 const ContextContainer = (props) => {
     const [currentExercise, setCurrentExercise] = React.useState({});
     const [selectedCategory, setCurrentCategory] = React.useState(null);
+    const [exercises, setExercises] = React.useState(dataExercises);
 
-    const data = Object.entries(dataExercises.reduce((acc, exercise) => {
+    const data = Object.entries(exercises.reduce((acc, exercise) => {
         const { muscles } = exercise;
 
         acc[muscles] = !!acc[muscles] ?
@@ -19,22 +28,30 @@ const ContextContainer = (props) => {
     }, {}));
 
     const selectCurrentExercise = (id) => {
-        setCurrentExercise(dataExercises.find(x => x.id === id));
+        setCurrentExercise(exercises.find(x => x.id === id));
+    }
+
+    const createNewExercise = (exercise) => {
+        setExercises([
+            ...exercises,
+            exercise
+        ])
     }
 
     return (
         <UserContext.Provider
             value={{
                 data,
-                dataExercises,
-                dataMuscles,
+                exercises,
+                categories,
                 selectedCategory,
                 setCurrentCategory,
                 currentExercise,
                 selectCurrentExercise,
+                createNewExercise,
             }}>
 
-            { props.children }
+            { props.children}
 
         </UserContext.Provider >
     )

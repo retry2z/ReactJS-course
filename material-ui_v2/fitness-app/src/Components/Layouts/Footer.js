@@ -20,13 +20,13 @@ const Footer = () => {
 
     const index =
         context.selectedCategory ?
-            context.dataMuscles.findIndex(x => x === context.selectedCategory) + 1 : 0;
+            context.categories.findIndex(x => x === context.selectedCategory) + 1 : 0;
 
     return (
         <AppBar className={classes.footer} color='inherit' position='fixed'>
             <Tabs
                 value={index}
-                onChange={(ev, index) => context.setCurrentCategory(!!index ? context.dataMuscles[index - 1] : null)}
+                onChange={(ev, index) => context.setCurrentCategory(!!index ? context.categories[index - 1] : null)}
                 indicatorColor='secondary'
                 textColor='primary'
                 centered
@@ -34,7 +34,7 @@ const Footer = () => {
                 <Tab label='All' />
 
                 {
-                    context.dataMuscles.map(muscle => (
+                    context.categories.map(muscle => (
                         <Tab key={muscle} label={muscle} />
                     ))
                 }
