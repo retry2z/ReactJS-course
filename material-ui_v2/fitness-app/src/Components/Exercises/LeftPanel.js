@@ -37,7 +37,7 @@ const LeftPanel = () => {
                 (!context.currentCategory || (context.currentCategory === muscles)) &&
                 <div key={muscles}>
                     <Typography className={classes.group}
-                        variant='h5'
+                        variant='h6'
                         color='primary'
                     >
                         {muscles}
