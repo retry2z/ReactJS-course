@@ -19,14 +19,16 @@ const ContextContainer = (props) => {
     const [selectedCategory, setCurrentCategory] = React.useState(null);
     const [exercises, setExercises] = React.useState(dataExercises);
 
+    const initialCategories = categories.reduce((acc, category) => {
+        acc[category] = []
+        return acc
+    }, {});
+
     const data = Object.entries(exercises.reduce((acc, exercise) => {
         const { muscles } = exercise;
-
-        acc[muscles] = !!acc[muscles] ?
-            [...acc[muscles], exercise] : [exercise]
-
+        acc[muscles] = [...acc[muscles], exercise];
         return acc
-    }, {}));
+    }, initialCategories));
 
     const selectExercise = (id) => {
         setCurrentExercise(exercises.find(x => x.id === id));
