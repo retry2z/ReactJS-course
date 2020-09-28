@@ -11,6 +11,7 @@ export const UserContext = React.createContext({
     currentExercise: {},
     selectCurrentExercise: () => { },
     createNewExercise: () => { },
+    removeExercise: () => { },
 });
 
 const ContextContainer = (props) => {
@@ -29,13 +30,17 @@ const ContextContainer = (props) => {
 
     const selectCurrentExercise = (id) => {
         setCurrentExercise(exercises.find(x => x.id === id));
-    }
+    };
 
     const createNewExercise = (exercise) => {
         setExercises([
             ...exercises,
             exercise
         ])
+    };
+
+    const removeExercise = (id) => {
+        setExercises(exercises.filter(x => x.id !== id));
     }
 
     return (
@@ -49,6 +54,7 @@ const ContextContainer = (props) => {
                 currentExercise,
                 selectCurrentExercise,
                 createNewExercise,
+                removeExercise,
             }}>
 
             { props.children}

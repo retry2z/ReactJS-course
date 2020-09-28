@@ -2,11 +2,14 @@ import React from 'react';
 import { UserContext } from '../../Context';
 
 import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import Delete from '@material-ui/icons/Delete'
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 const useStyles = makeStyles({
     root: {
@@ -40,9 +43,11 @@ const LeftPanel = () => {
                         {muscles}
                     </Typography>
 
-                    {exercises.map(exercise => (
-                        <List key={exercise.title} component='ul'>
-                            <ListItem button
+                    <List component='ul'>
+                        {exercises.map(exercise => (
+                            <ListItem
+                                key={exercise.title}
+                                button
                                 onClick={() => context.selectCurrentExercise(exercise.id)}
                             >
                                 <ListItemText primary=
@@ -50,9 +55,15 @@ const LeftPanel = () => {
                                         <Typography variant='subtitle2'>{exercise.title}</Typography>
                                     }
                                 />
+
+                                <ListItemSecondaryAction>
+                                    <IconButton onClick={() => context.removeExercise(exercise.id)}>
+                                        <Delete />
+                                    </IconButton>
+                                </ListItemSecondaryAction>
                             </ListItem>
-                        </List>
-                    ))}
+                        ))}
+                    </List>
                 </div>
             ))}
         </Paper>
