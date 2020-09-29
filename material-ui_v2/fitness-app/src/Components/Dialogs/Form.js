@@ -33,15 +33,15 @@ const useStyle = makeStyles({
 
 });
 
-const Form = ({ onChange, onSubmit, data = false }) => {
+const Form = ({ onChange, onSubmit, edit = false }) => {
     const classes = useStyle();
-    const [form, setForm] = React.useState({
-        id: data.id || '',
-        title: data.title || '',
-        description: data.description || '',
-        muscles: data.muscles || '',
-    });
     const context = React.useContext(UserContext);
+    const [form, setForm] = React.useState({
+        id: (edit && context.currentExercise.id) || '',
+        title: (edit && context.currentExercise.title) || '',
+        description: (edit && context.currentExercise.description) || '',
+        muscles: (edit && context.currentExercise.muscles) || '',
+    });
 
     const handleChange = (ev, name) => {
         setForm({
@@ -55,7 +55,7 @@ const Form = ({ onChange, onSubmit, data = false }) => {
     const handleSubmit = () => {
         setForm({
             ...form,
-            id: data.id || form.title.toLowerCase().replace(/ /g, '-')
+            id: form.id || form.title.toLowerCase().replace(/ /g, '-')
         });
 
         !!onSubmit && onSubmit(form);
@@ -77,7 +77,7 @@ const Form = ({ onChange, onSubmit, data = false }) => {
                     Muscle
             </InputLabel>
                 <Select
-                    value={form.muscles}
+                    value={form.muscles || context.currentCategory}
                     onChange={(e) => handleChange(e, 'muscles')}
                 >
                     {context.categories.map((option) => (
@@ -102,7 +102,7 @@ const Form = ({ onChange, onSubmit, data = false }) => {
                 />
             </FormControl>
 
-            <Grid container justify="flex-end" spacing="2">
+            <Grid container justify="flex-end" spacing={2}>
                 <Grid item>
                     <Button type="reset" variant="outlined">
                         Reset

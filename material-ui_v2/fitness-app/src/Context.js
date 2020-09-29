@@ -42,17 +42,20 @@ const ContextContainer = (props) => {
     const enableEditMode = (id) => {
         setCurrentExercise(exercises.find(x => x.id === id));
         setEditMode(true);
-    }
+    };
 
     const disableEditMode = () => {
         setEditMode(false);
-    }
+    };
 
     const selectCategory = (value) => {
         setCurrentCategory(value);
     };
 
     const selectExercise = (id) => {
+        if (editMode) {
+            setEditMode(false)
+        }
         setCurrentExercise(exercises.find(x => x.id === id));
     };
 
@@ -64,14 +67,13 @@ const ContextContainer = (props) => {
     };
 
     const editExercise = (exercise) => {
-        setExercises(
-            [
-                ...exercises.filter(x => x.id !== exercise.id),
-                exercise
-            ]
-        )
-
-    }
+        setExercises([
+            ...exercises.filter(x => x.id !== exercise.id),
+            exercise
+        ])
+        setEditMode(false);
+        setCurrentExercise(exercise);
+    };
 
     const removeExercise = (id) => {
         setExercises(exercises.filter(x => x.id !== id));
@@ -103,7 +105,6 @@ const ContextContainer = (props) => {
 
         </UserContext.Provider >
     )
-
 }
 
 export default ContextContainer
