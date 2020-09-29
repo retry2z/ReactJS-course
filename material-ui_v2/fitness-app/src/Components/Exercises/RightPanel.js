@@ -4,6 +4,7 @@ import { UserContext } from '../../Context';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Form from '../Dialogs/Form';
 
 const useStyles = makeStyles({
     item: {
@@ -18,20 +19,31 @@ const RightPanel = () => {
     const context = React.useContext(UserContext);
     const classes = useStyles();
     const {
-        // id,
         title = 'Welcome',
         description = 'Please select an exercise from the list',
     } = context.currentExercise;
 
+    const handleSubmitForm = (data) => {
+        context.editExercise(data);
+        context.disableEditMode();
+    };
 
     return (
         <Paper className={classes.item}>
-            <Typography variant='h3' color='primary'>
-                {title}
-            </Typography>
-            <Typography variant='subtitle1' color='secondary'>
-                {description}
-            </Typography>
+            {context.editMode ?
+                <Form
+                    onSubmit={handleSubmitForm}
+                    data={context.currentExercise}
+                />
+                :
+                <>
+                    <Typography variant='h3' color='primary'>
+                        {title}
+                    </Typography>
+                    <Typography variant='subtitle1' color='secondary'>
+                        {description}
+                    </Typography>
+                </>}
         </Paper>
     );
 }

@@ -3,7 +3,8 @@ import { UserContext } from '../../Context';
 
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import Delete from '@material-ui/icons/Delete'
+import Delete from '@material-ui/icons/Delete';
+import Edit from '@material-ui/icons/Edit';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
@@ -57,6 +58,9 @@ const LeftPanel = () => {
                                 />
 
                                 <ListItemSecondaryAction>
+                                    <IconButton onClick={() => context.enableEditMode(exercise.id)}>
+                                        <Edit />
+                                    </IconButton>
                                     <IconButton onClick={() => context.removeExercise(exercise.id)}>
                                         <Delete />
                                     </IconButton>

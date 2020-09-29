@@ -6,17 +6,26 @@ export const UserContext = React.createContext({
     data: [],
     exercises: [],
     categories: [],
+
+    editMode: false,
+    enableEditMode: () => { },
+    disableEditMode: () => { },
+
     currentCategory: '',
     selectCategory: () => { },
+
     currentExercise: {},
     selectExercise: () => { },
+
     createExercise: () => { },
     removeExercise: () => { },
+    editExercise: () => { },
 });
 
 const ContextContainer = (props) => {
     const [currentExercise, setCurrentExercise] = React.useState({});
     const [currentCategory, setCurrentCategory] = React.useState(null);
+    const [editMode, setEditMode] = React.useState(false);
     const [exercises, setExercises] = React.useState(dataExercises);
 
     const initialCategories = categories.reduce((acc, category) => {
@@ -29,6 +38,15 @@ const ContextContainer = (props) => {
         acc[muscles] = [...acc[muscles], exercise];
         return acc
     }, initialCategories));
+
+    const enableEditMode = (id) => {
+        setCurrentExercise(exercises.find(x => x.id === id));
+        setEditMode(true);
+    }
+
+    const disableEditMode = () => {
+        setEditMode(false);
+    }
 
     const selectCategory = (value) => {
         setCurrentCategory(value);
@@ -45,6 +63,16 @@ const ContextContainer = (props) => {
         ])
     };
 
+    const editExercise = (exercise) => {
+        setExercises(
+            [
+                ...exercises.filter(x => x.id !== exercise.id),
+                exercise
+            ]
+        )
+
+    }
+
     const removeExercise = (id) => {
         setExercises(exercises.filter(x => x.id !== id));
     };
@@ -55,11 +83,19 @@ const ContextContainer = (props) => {
                 data,
                 exercises,
                 categories,
+
+                editMode,
+                enableEditMode,
+                disableEditMode,
+
                 currentCategory,
                 selectCategory,
+
                 currentExercise,
                 selectExercise,
+
                 createExercise,
+                editExercise,
                 removeExercise,
             }}>
 
