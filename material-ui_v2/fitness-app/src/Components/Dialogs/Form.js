@@ -77,7 +77,7 @@ const Form = ({ onChange, onSubmit, edit = false }) => {
                     Muscle
             </InputLabel>
                 <Select
-                    value={form.muscles || context.currentCategory}
+                    value={form.muscles || context.currentCategory || ''}
                     onChange={(e) => handleChange(e, 'muscles')}
                 >
                     {context.categories.map((option) => (

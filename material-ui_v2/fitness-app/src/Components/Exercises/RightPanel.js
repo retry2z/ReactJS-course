@@ -21,7 +21,6 @@ const RightPanel = () => {
     const {
         title = 'Welcome',
         description = 'Please select an exercise from the list',
-        id = null,
     } = context.currentExercise;
 
     const handleSubmitForm = (data) => {

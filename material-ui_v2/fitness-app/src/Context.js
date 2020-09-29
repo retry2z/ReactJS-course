@@ -77,6 +77,10 @@ const ContextContainer = (props) => {
 
     const removeExercise = (id) => {
         setExercises(exercises.filter(x => x.id !== id));
+        if (editMode) {
+            setEditMode(false);
+        }
+        setCurrentExercise({});
     };
 
     return (
