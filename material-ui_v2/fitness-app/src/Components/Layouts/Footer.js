@@ -1,7 +1,6 @@
 import React from 'react';
 import { UserContext } from '../../Context';
 
-import {} from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -13,6 +12,11 @@ const useStyle = makeStyles(theme => ({
         bottom: 0,
         height: 78,
     },
+    tabs: {
+        [theme.breakpoints.up("md")]: {
+            margin: '0 auto'
+        },
+    }
 }));
 
 
@@ -28,6 +32,7 @@ const Footer = () => {
     return (
         <AppBar className={classes.footer} color='inherit' position='fixed'>
             <Tabs
+                className={classes.tabs}
                 variant="scrollable"
                 value={index}
                 onChange={(ev, index) => context.selectCategory(!!index ? context.categories[index - 1] : null)}
