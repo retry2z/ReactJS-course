@@ -3,6 +3,9 @@ import React from 'react';
 import { exercises as dataExercises, muscles as categories } from './data/store';
 
 export const UserContext = React.createContext({
+    isDark:false,
+    themeSwitcher: () => { },
+
     data: [],
     exercises: [],
     categories: [],
@@ -27,6 +30,11 @@ const ContextContainer = (props) => {
     const [currentCategory, setCurrentCategory] = React.useState(null);
     const [editMode, setEditMode] = React.useState(false);
     const [exercises, setExercises] = React.useState(dataExercises);
+    const [isDark, setDark] = React.useState(false);
+
+    const themeSwitcher = () => {
+        setDark(!isDark);
+    };
 
     const initialCategories = categories.reduce((acc, category) => {
         acc[category] = []
@@ -85,32 +93,35 @@ const ContextContainer = (props) => {
         );
     };
 
-return (
-    <UserContext.Provider
-        value={{
-            data,
-            exercises,
-            categories,
+    return (
+        <UserContext.Provider
+            value={{
+                isDark,
+                themeSwitcher,
 
-            editMode,
-            enableEditMode,
-            disableEditMode,
+                data,
+                exercises,
+                categories,
 
-            currentCategory,
-            selectCategory,
+                editMode,
+                enableEditMode,
+                disableEditMode,
 
-            currentExercise,
-            selectExercise,
+                currentCategory,
+                selectCategory,
 
-            createExercise,
-            editExercise,
-            removeExercise,
-        }}>
+                currentExercise,
+                selectExercise,
 
-        { props.children}
+                createExercise,
+                editExercise,
+                removeExercise,
+            }}>
 
-    </UserContext.Provider >
-)
+            { props.children}
+
+        </UserContext.Provider >
+    )
 }
 
 export default ContextContainer

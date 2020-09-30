@@ -51,17 +51,24 @@ const LeftPanel = () => {
                                 button
                                 onClick={() => context.selectExercise(exercise.id)}
                             >
-                                <ListItemText primary=
-                                    {
+                                <ListItemText
+                                    primary={
                                         <Typography variant='subtitle2'>{exercise.title}</Typography>
                                     }
                                 />
 
                                 <ListItemSecondaryAction>
-                                    <IconButton onClick={() => context.enableEditMode(exercise.id)}>
+                                    <IconButton
+                                        onClick={() => context.enableEditMode(exercise.id)}
+                                        color="secondary"
+                                    >
                                         <Edit />
                                     </IconButton>
-                                    <IconButton onClick={() => context.removeExercise(exercise.id)}>
+
+                                    <IconButton
+                                        onClick={() => context.removeExercise(exercise.id)}
+                                        color="primary"
+                                    >
                                         <Delete />
                                     </IconButton>
                                 </ListItemSecondaryAction>

@@ -31,8 +31,8 @@ const Footer = () => {
                 variant="scrollable"
                 value={index}
                 onChange={(ev, index) => context.selectCategory(!!index ? context.categories[index - 1] : null)}
-                indicatorColor='secondary'
-                textColor='primary'
+                indicatorColor="primary"
+                textColor="secondary"
             >
                 <Tab label='All' />
 

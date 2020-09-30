@@ -4,7 +4,7 @@ import { UserContext } from '../../Context';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Form from '../Dialogs/Form';
+import Form from '../Core/Form';
 
 const useStyles = makeStyles({
     item: {
@@ -31,7 +31,7 @@ const RightPanel = () => {
 
     return (
         <Paper className={classes.item}>
-            <Typography variant='h3' color='primary'>
+            <Typography variant='h4' color='primary'>
                 {title}
             </Typography>
             {
@@ -42,7 +42,6 @@ const RightPanel = () => {
                         onSubmit={handleSubmitForm}
                     />
                     :
-
                     <Typography variant='subtitle1' color='secondary'>
                         {description}
                     </Typography>
