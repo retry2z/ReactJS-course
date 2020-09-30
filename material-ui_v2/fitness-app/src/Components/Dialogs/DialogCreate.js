@@ -2,6 +2,7 @@ import React from 'react';
 
 import { UserContext } from '../../Context';
 
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -11,9 +12,22 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Add from '@material-ui/icons/Add';
 import Form from './Form';
 
+const useStyles = makeStyles(theme => ({
+    root: {
+        [theme.breakpoints.up("xs")]: {
+            width: 300,
+        },
+        [theme.breakpoints.up("sm")]: {
+            width: 500,
+        },
+    }
+}));
+
+
 const Create = () => {
     const [open, setOpen] = React.useState(false);
     const context = React.useContext(UserContext);
+    const classes = useStyles();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -49,13 +63,12 @@ const Create = () => {
                     Create new exercise
                 </DialogTitle>
 
-                <DialogContent>
+                <DialogContent className={classes.root}>
                     <DialogContentText>
                         Let's try something new
                     </DialogContentText>
 
-                    <Form onSubmit={handleSubmitForm} />
-
+                        <Form onSubmit={handleSubmitForm} />
 
                 </DialogContent>
 

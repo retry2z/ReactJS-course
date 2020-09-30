@@ -21,6 +21,7 @@ const RightPanel = () => {
     const {
         title = 'Welcome',
         description = 'Please select an exercise from the list',
+        id
     } = context.currentExercise;
 
     const handleSubmitForm = (data) => {
@@ -30,20 +31,22 @@ const RightPanel = () => {
 
     return (
         <Paper className={classes.item}>
-            {context.editMode ?
-                <Form
-                    edit
-                    onSubmit={handleSubmitForm}
-                />
-                :
-                <>
-                    <Typography variant='h3' color='primary'>
-                        {title}
-                    </Typography>
+            <Typography variant='h3' color='primary'>
+                {title}
+            </Typography>
+            {
+                context.editMode ?
+                    <Form
+                        key={id}
+                        edit
+                        onSubmit={handleSubmitForm}
+                    />
+                    :
+
                     <Typography variant='subtitle1' color='secondary'>
                         {description}
                     </Typography>
-                </>}
+            }
         </Paper>
     );
 }

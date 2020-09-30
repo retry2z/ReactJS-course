@@ -12,25 +12,19 @@ import Button from '@material-ui/core/Button';
 import { Grid } from '@material-ui/core';
 
 const useStyle = makeStyles({
-    root: {
-        width: 360,
-    },
     input: {
-        paddingBottom: 20,
         display: 'block',
+        paddingBottom: 18,
+        textTransform: 'capitalize',
     },
     select: {
         width: '50%',
-        paddingBottom: 20,
-        textTransform: 'capitalize',
-    },
-    options: {
+        paddingBottom: 18,
         textTransform: 'capitalize',
     },
     actions: {
         textAlign: 'right',
     }
-
 });
 
 const Form = ({ onChange, onSubmit, edit = false }) => {
@@ -58,6 +52,7 @@ const Form = ({ onChange, onSubmit, edit = false }) => {
             id: form.id || form.title.toLowerCase().replace(/ /g, '-')
         });
 
+        console.log(form);
         !!onSubmit && onSubmit(form);
     };
 
@@ -75,9 +70,9 @@ const Form = ({ onChange, onSubmit, edit = false }) => {
             <FormControl className={classes.select}>
                 <InputLabel>
                     Muscle
-            </InputLabel>
+                </InputLabel>
                 <Select
-                    value={form.muscles || context.currentCategory || ''}
+                    value={form.muscles || ''}
                     onChange={(e) => handleChange(e, 'muscles')}
                 >
                     {context.categories.map((option) => (

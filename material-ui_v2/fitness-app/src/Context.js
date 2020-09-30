@@ -78,37 +78,39 @@ const ContextContainer = (props) => {
     const removeExercise = (id) => {
         setExercises(exercises.filter(x => x.id !== id));
         if (editMode) {
-            setEditMode(false);
+            currentExercise.id === id && setEditMode(false)
         }
-        setCurrentExercise({});
+        setCurrentExercise(
+            currentExercise.id === id ? {} : currentExercise
+        );
     };
 
-    return (
-        <UserContext.Provider
-            value={{
-                data,
-                exercises,
-                categories,
+return (
+    <UserContext.Provider
+        value={{
+            data,
+            exercises,
+            categories,
 
-                editMode,
-                enableEditMode,
-                disableEditMode,
+            editMode,
+            enableEditMode,
+            disableEditMode,
 
-                currentCategory,
-                selectCategory,
+            currentCategory,
+            selectCategory,
 
-                currentExercise,
-                selectExercise,
+            currentExercise,
+            selectExercise,
 
-                createExercise,
-                editExercise,
-                removeExercise,
-            }}>
+            createExercise,
+            editExercise,
+            removeExercise,
+        }}>
 
-            { props.children}
+        { props.children}
 
-        </UserContext.Provider >
-    )
+    </UserContext.Provider >
+)
 }
 
 export default ContextContainer
