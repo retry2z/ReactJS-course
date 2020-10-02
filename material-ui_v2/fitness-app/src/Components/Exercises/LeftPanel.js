@@ -12,33 +12,29 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
-const useStyles = makeStyles({
-    root: {
-        padding: 20,
-    },
-    item: {
-        padding: 34,
-        margin: 18,
-        height: 550,
-        overflowY: 'auto'
+const useStyles = makeStyles(theme => ({
+    paper: {
+        height: '100%',
+        overflowY: 'auto',
+        padding: 22,
     },
     group: {
         textTransform: 'capitalize',
     }
-});
+}));
 
 const LeftPanel = () => {
     const context = React.useContext(UserContext);
     const classes = useStyles();
 
     return (
-        <Paper className={classes.item}>
+        <Paper className={classes.paper}>
 
             {context.data.map(([muscles, exercises]) => (
                 (!context.currentCategory || (context.currentCategory === muscles)) &&
                 <div key={muscles}>
                     <Typography className={classes.group}
-                        variant='h6'
+                        variant='h5'
                         color='primary'
                     >
                         {muscles}

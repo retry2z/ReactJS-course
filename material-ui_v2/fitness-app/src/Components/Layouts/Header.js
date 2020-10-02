@@ -11,17 +11,20 @@ import Fab from '@material-ui/core/Fab';
 import Brightness5 from '@material-ui/icons/Brightness5';
 
 const useStyle = makeStyles({
+    root: {
+        height: '64px',
+    },
     userActions: {
-        margin: 16,
+        marginRight: 16,
     }
-})
+});
 
 const Header = () => {
     const context = React.useContext(UserContext);
     const classes = useStyle();
 
     return (
-        <AppBar position='static'>
+        <AppBar className={classes.root} position='static'>
             <Toolbar>
                 <Grid
                     container

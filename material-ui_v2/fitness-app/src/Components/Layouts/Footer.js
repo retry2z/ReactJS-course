@@ -20,7 +20,6 @@ const useStyle = makeStyles(theme => ({
 }));
 
 
-
 const Footer = () => {
     const context = React.useContext(UserContext);
     const classes = useStyle();

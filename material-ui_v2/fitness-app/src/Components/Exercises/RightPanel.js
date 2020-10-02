@@ -6,14 +6,13 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Form from '../Core/Form';
 
-const useStyles = makeStyles({
-    item: {
-        padding: 34,
-        margin: 18,
-        height: 550,
-        overflowY: 'auto'
+const useStyles = makeStyles(theme => ({
+    paper: {
+        height: '100%',
+        overflowY: 'auto',
+        padding: 22,
     },
-})
+}));
 
 const RightPanel = () => {
     const context = React.useContext(UserContext);
@@ -30,7 +29,7 @@ const RightPanel = () => {
     };
 
     return (
-        <Paper className={classes.item}>
+        <Paper className={classes.paper}>
             <Typography variant='h4' color='primary'>
                 {title}
             </Typography>
