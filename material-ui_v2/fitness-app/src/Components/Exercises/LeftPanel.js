@@ -5,31 +5,24 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
-const useStyles = makeStyles(theme => ({
-    paper: {
-        height: '100%',
-        overflowY: 'auto',
-        padding: 22,
-    },
+const useStyles = makeStyles({
     group: {
         textTransform: 'capitalize',
     }
-}));
+});
 
 const LeftPanel = () => {
     const context = React.useContext(UserContext);
     const classes = useStyles();
 
     return (
-        <Paper className={classes.paper}>
-
+        <>
             {context.data.map(([muscles, exercises]) => (
                 (!context.currentCategory || (context.currentCategory === muscles)) &&
                 <div key={muscles}>
@@ -73,7 +66,7 @@ const LeftPanel = () => {
                     </List>
                 </div>
             ))}
-        </Paper>
+        </>
     );
 }
 

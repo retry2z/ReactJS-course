@@ -45,7 +45,7 @@ const Create = () => {
     return (
         <>
             <Fab
-                color="secondary"
+                color="default"
                 onClick={handleClickOpen}
                 size="small"
                 aria-label="add an exercise"

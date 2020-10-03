@@ -42,7 +42,7 @@ const Header = () => {
                         <Fab
                             className={classes.userActions}
                             onClick={context.themeSwitcher}
-                            color="secondary"
+                            color="default"
                             size="small"
                             aria-label="theme">
                             <Brightness5 />

@@ -2,11 +2,10 @@ import React from 'react';
 import { UserContext } from '../Context';
 
 import { Header, Main, Footer } from './Layouts';
-import Exercises from './Exercises';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { deepOrange, orange } from '@material-ui/core/colors';
+import { deepOrange, orange, amber } from '@material-ui/core/colors/';
 
 const App = () => {
   const context = React.useContext(UserContext);
@@ -15,7 +14,7 @@ const App = () => {
     palette: {
       type: context.isDark ? 'dark' : 'light',
       primary: deepOrange,
-      secondary: orange,
+      secondary: context.isDark ? amber : orange,
     },
   });
 
@@ -24,9 +23,7 @@ const App = () => {
       <CssBaseline />
 
       <Header />
-      <Main>
-        <Exercises />
-      </Main>
+      <Main />
       <Footer />
     </MuiThemeProvider>
   );
