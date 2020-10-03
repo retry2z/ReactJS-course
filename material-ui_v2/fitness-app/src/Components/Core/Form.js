@@ -14,12 +14,12 @@ import { Grid } from '@material-ui/core';
 const useStyle = makeStyles({
     input: {
         display: 'block',
-        paddingBottom: 18,
+        paddingBottom: 16,
         textTransform: 'capitalize',
     },
     select: {
         width: '50%',
-        paddingBottom: 18,
+        paddingBottom: 16,
         textTransform: 'capitalize',
     },
     actions: {

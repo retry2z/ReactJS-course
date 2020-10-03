@@ -3,6 +3,7 @@ import { UserContext } from '../../Context';
 
 import Typography from '@material-ui/core/Typography';
 import Form from '../Core/Form';
+import { Hidden } from '@material-ui/core';
 
 const RightPanel = () => {
     const context = React.useContext(UserContext);
@@ -19,9 +20,11 @@ const RightPanel = () => {
 
     return (
         <>
-            <Typography variant='h4' color='primary'>
-                {title}
-            </Typography>
+            <Hidden smDown>
+                <Typography variant='h4' color='primary'>
+                    {title}
+                </Typography>
+            </Hidden>
             {
                 context.editMode ?
                     <Form
