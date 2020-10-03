@@ -11,8 +11,7 @@ const useStyles = makeStyles(theme => ({
     },
     item: {
         [theme.breakpoints.up('sm')]: {
-            marginTop: 5,
-            height: 'calc(100% - 64px - 78px - 5px)',
+            height: '100%',
         },
         [theme.breakpoints.down('xs')]: {
             height: '50%',
