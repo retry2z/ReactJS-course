@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
             height: 'calc(100% - 64px - 78px - 10px)',
         },
         [theme.breakpoints.down('xs')]: {
-            height: 'calc(100% - 64px - 78px',
+            height: 'calc(100%)',
         },
 
     },
